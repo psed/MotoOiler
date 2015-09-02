@@ -13,7 +13,6 @@
 
  void setup()
  {
-   // Initializing virtual serial port
    Serial.begin(9600);
 
    // Reading saved config parameters
