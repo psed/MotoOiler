@@ -1,10 +1,6 @@
+ #include "constants.h"
  #include <EEPROM.h>
 
- int valvePin = 8;
- 
- int rotationsEEPROMAddress = 0;
- int valveOpenTimeEEPROMAddress = 10;
- 
  String consoleCommand;
  
  int rotations;
@@ -14,21 +10,13 @@
  void setup()
  {
    Serial.begin(9600);
-
-   // Reading saved config parameters
    initConfigsFromEEPROM();
-   
-   // Attaching Hall sensor interrupt function
    attachInterrupt(0, hallSensorInterrupted, RISING);
-   
-   // Init variables
    rotations = 0;
-   
-   // Setup pins
+
    pinMode(valvePin, OUTPUT);
    digitalWrite(valvePin, LOW);
    
-   // Printing current config
    printConfig();
  }
 
