@@ -1,0 +1,4 @@
+bool configIsNotCorrect()
+{
+  return true;
+}

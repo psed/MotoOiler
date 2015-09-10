@@ -1,4 +1,5 @@
  #include "constants.h"
+ #include "util.h"
  #include <EEPROM.h>
 
  String consoleCommand;
@@ -10,10 +11,17 @@
  void setup()
  {
    Serial.begin(9600);
+   
    initConfigsFromEEPROM();
+   if(configIsNotCorrect())
+   {
+     //writeDefaultConfig(); 
+   }
+   
    attachInterrupt(0, hallSensorInterrupted, RISING);
+   
    rotations = 0;
-
+   
    pinMode(valvePin, OUTPUT);
    digitalWrite(valvePin, LOW);
    
